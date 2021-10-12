@@ -7,16 +7,15 @@ import glob2 as gb
 def facedetect(picname):
     # FaceDetect Ref : https://zhuanlan.zhihu.com/p/63154631
 
-    # 加载haar级联分类器
+    # 加載haar級聯分類器
     face_cascade = cv.CascadeClassifier(
         './haarcascade_frontalface_default.xml')
-
-    # 读取进行检测的图像
+    # 讀取進行檢測的圖像
     img = cv.imread(picname)
-    # 将原图像转为灰度图
+    # 將原圖像轉為灰度圖
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-    # 使用级联分类器进行人脸检测 返回值为 人脸的bounding box参数（左上角坐标（x,y），矩形框长和宽）
-    # 如果有多张人脸 则返回一个四维数组
+    # 使用級聯分類器進行人臉檢測 返回值為 人臉的bounding box參數（左上角坐標（x,y），矩形框長和寬）
+    # 如果有多張人臉 則返回一個四維數組
     BBox = face_cascade.detectMultiScale(gray, 1.3, 5)
     if BBox == ():
         return False
